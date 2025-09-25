@@ -248,3 +248,92 @@ img {
     font-size: 2rem;
   }
 }
+/* === АНИМАЦИИ === */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Главный экран: появление при загрузке --- */
+.hero__title,
+.hero__subtitle,
+.hero .btn {
+  opacity: 0;
+  animation: fadeInUp 0.9s ease forwards;
+}
+.hero__title  { animation-delay: 0.20s; }
+.hero__subtitle { animation-delay: 0.40s; }
+.hero .btn    { animation-delay: 0.60s; }
+
+/* --- Карточки туров: стартовое состояние и hover --- */
+.tour-card {
+  opacity: 0;
+  transform: translateY(20px) scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+.tour-card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.tour-card:hover {
+  transform: translateY(0) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+/* --- Кнопки --- */
+.btn {
+  display: inline-block;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+  background-color: #ff6347;
+  color: #fff;
+}
+
+/* --- Навигация: подчёркивание при hover --- */
+.nav__link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #ff6347;
+  transition: width 0.25s ease;
+}
+.nav__link:hover::after { width: 100%; }
+
+/* --- Footer --- */
+.footer {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.footer.show { opacity: 1; transform: translateY(0); }
+
+.footer__contacts a {
+  margin: 0 8px;
+  font-size: 20px;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.footer__contacts a:hover {
+  transform: scale(1.15);
+  color: #ff6347;
+}
+
+/* --- Универсальный класс для анимации при скролле --- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
